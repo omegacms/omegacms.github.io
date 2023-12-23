@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>Omega Doc</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+    <base href="../">
+
+    <link href="css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet" media="all"/>
+    <link href="css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+    <![endif]-->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.smooth-scroll.js"></script>
+    <script src="js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="index.html">Omega Doc</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="namespaces/omega.html"><abbr title="\Omega">Omega</abbr></a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1413754685"></a>
+                                <a href="namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1413754685" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-937616273"></a>
+                                <a href="namespaces/omega.html" style="margin-left: 30px; padding-left: 0">Omega</a>
+            </div>
+            <div id="namespace-937616273" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1864586607"></a>
+                                <a href="namespaces/omega-application.html" style="margin-left: 30px; padding-left: 0">Application</a>
+            </div>
+            <div id="namespace-1864586607" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1095375172"></a>
+                                <a href="namespaces/omega-application-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-1095375172" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Application-Exceptions-SingletonException.html"><abbr title="\Omega\Application\Exceptions\SingletonException">SingletonException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="classes/Omega-Application-SingletonTrait.html"><abbr title="\Omega\Application\SingletonTrait">SingletonTrait</abbr></a></li>
+                                                                            <li class="class"><a href="classes/Omega-Application-Application.html"><abbr title="\Omega\Application\Application">Application</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-146770537"></a>
+                                <a href="namespaces/omega-cache.html" style="margin-left: 30px; padding-left: 0">Cache</a>
+            </div>
+            <div id="namespace-146770537" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1195155048"></a>
+                                <a href="namespaces/omega-cache-adapter.html" style="margin-left: 30px; padding-left: 0">Adapter</a>
+            </div>
+            <div id="namespace-1195155048" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Cache-Adapter-CacheAdapterInterface.html"><abbr title="\Omega\Cache\Adapter\CacheAdapterInterface">CacheAdapterInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Cache-Adapter-AbstractCacheAdapter.html"><abbr title="\Omega\Cache\Adapter\AbstractCacheAdapter">AbstractCacheAdapter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Cache-Adapter-FileAdapter.html"><abbr title="\Omega\Cache\Adapter\FileAdapter">FileAdapter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Cache-Adapter-MemcacheAdapter.html"><abbr title="\Omega\Cache\Adapter\MemcacheAdapter">MemcacheAdapter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Cache-Adapter-MemoryAdapter.html"><abbr title="\Omega\Cache\Adapter\MemoryAdapter">MemoryAdapter</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1639967028"></a>
+                                <a href="namespaces/omega-cache-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-1639967028" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Cache-Exceptions-UnsupportedAdapterException.html"><abbr title="\Omega\Cache\Exceptions\UnsupportedAdapterException">UnsupportedAdapterException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1677936425"></a>
+                                <a href="namespaces/omega-cache-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-1677936425" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Cache-ServiceProvider-CacheServiceProvider.html"><abbr title="\Omega\Cache\ServiceProvider\CacheServiceProvider">CacheServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Cache-CacheFactory.html"><abbr title="\Omega\Cache\CacheFactory">CacheFactory</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1296729077"></a>
+                                <a href="namespaces/omega-commands.html" style="margin-left: 30px; padding-left: 0">Commands</a>
+            </div>
+            <div id="namespace-1296729077" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Commands-EnvironmentCommand.html"><abbr title="\Omega\Commands\EnvironmentCommand">EnvironmentCommand</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Commands-MigrateCommand.html"><abbr title="\Omega\Commands\MigrateCommand">MigrateCommand</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Commands-ServeCommand.html"><abbr title="\Omega\Commands\ServeCommand">ServeCommand</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1062728009"></a>
+                                <a href="namespaces/omega-config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-1062728009" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-357814789"></a>
+                                <a href="namespaces/omega-config-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-357814789" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Config-ServiceProvider-ConfigServiceProvider.html"><abbr title="\Omega\Config\ServiceProvider\ConfigServiceProvider">ConfigServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Config-Config.html"><abbr title="\Omega\Config\Config">Config</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-907517397"></a>
+                                <a href="namespaces/omega-container.html" style="margin-left: 30px; padding-left: 0">Container</a>
+            </div>
+            <div id="namespace-907517397" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1097923662"></a>
+                                <a href="namespaces/omega-container-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-1097923662" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Container-Exceptions-ContainerExceptionInterface.html"><abbr title="\Omega\Container\Exceptions\ContainerExceptionInterface">ContainerExceptionInterface</abbr></a></li>
+                                                    <li class="interface"><a href="classes/Omega-Container-Exceptions-NotFoundExceptionInterface.html"><abbr title="\Omega\Container\Exceptions\NotFoundExceptionInterface">NotFoundExceptionInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Container-Exceptions-DependencyResolutionException.html"><abbr title="\Omega\Container\Exceptions\DependencyResolutionException">DependencyResolutionException</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Container-Exceptions-KeyNotFoundException.html"><abbr title="\Omega\Container\Exceptions\KeyNotFoundException">KeyNotFoundException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Container-Container.html"><abbr title="\Omega\Container\Container">Container</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1412136992"></a>
+                                <a href="namespaces/omega-database.html" style="margin-left: 30px; padding-left: 0">Database</a>
+            </div>
+            <div id="namespace-1412136992" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-715895334"></a>
+                                <a href="namespaces/omega-database-adapter.html" style="margin-left: 30px; padding-left: 0">Adapter</a>
+            </div>
+            <div id="namespace-715895334" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Database-Adapter-DatabaseAdapterInterface.html"><abbr title="\Omega\Database\Adapter\DatabaseAdapterInterface">DatabaseAdapterInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Database-Adapter-AbstractDatabaseAdapter.html"><abbr title="\Omega\Database\Adapter\AbstractDatabaseAdapter">AbstractDatabaseAdapter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Adapter-MysqlAdapter.html"><abbr title="\Omega\Database\Adapter\MysqlAdapter">MysqlAdapter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Adapter-SqliteAdapter.html"><abbr title="\Omega\Database\Adapter\SqliteAdapter">SqliteAdapter</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-747111424"></a>
+                                <a href="namespaces/omega-database-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-747111424" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Database-Exceptions-AdapterException.html"><abbr title="\Omega\Database\Exceptions\AdapterException">AdapterException</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Exceptions-ConnectionException.html"><abbr title="\Omega\Database\Exceptions\ConnectionException">ConnectionException</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Exceptions-MigrationException.html"><abbr title="\Omega\Database\Exceptions\MigrationException">MigrationException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-977037026"></a>
+                                <a href="namespaces/omega-database-migration.html" style="margin-left: 30px; padding-left: 0">Migration</a>
+            </div>
+            <div id="namespace-977037026" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1465263210"></a>
+                                <a href="namespaces/omega-database-migration-field.html" style="margin-left: 30px; padding-left: 0">Field</a>
+            </div>
+            <div id="namespace-1465263210" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Database-Migration-Field-FieldInterface.html"><abbr title="\Omega\Database\Migration\Field\FieldInterface">FieldInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Database-Migration-Field-AbstractField.html"><abbr title="\Omega\Database\Migration\Field\AbstractField">AbstractField</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-Field-BoolField.html"><abbr title="\Omega\Database\Migration\Field\BoolField">BoolField</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-Field-DateTimeField.html"><abbr title="\Omega\Database\Migration\Field\DateTimeField">DateTimeField</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-Field-FloatField.html"><abbr title="\Omega\Database\Migration\Field\FloatField">FloatField</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-Field-IdField.html"><abbr title="\Omega\Database\Migration\Field\IdField">IdField</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-Field-IntField.html"><abbr title="\Omega\Database\Migration\Field\IntField">IntField</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-Field-StringField.html"><abbr title="\Omega\Database\Migration\Field\StringField">StringField</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-Field-TextField.html"><abbr title="\Omega\Database\Migration\Field\TextField">TextField</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Database-Migration-MigrationInterface.html"><abbr title="\Omega\Database\Migration\MigrationInterface">MigrationInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Database-Migration-AbstractMigration.html"><abbr title="\Omega\Database\Migration\AbstractMigration">AbstractMigration</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-MysqlMigration.html"><abbr title="\Omega\Database\Migration\MysqlMigration">MysqlMigration</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Migration-SqliteMigration.html"><abbr title="\Omega\Database\Migration\SqliteMigration">SqliteMigration</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1283347891"></a>
+                                <a href="namespaces/omega-database-model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-1283347891" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Database-Model-AbstractModel.html"><abbr title="\Omega\Database\Model\AbstractModel">AbstractModel</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Model-ModelCollector.html"><abbr title="\Omega\Database\Model\ModelCollector">ModelCollector</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-207182590"></a>
+                                <a href="namespaces/omega-database-querybuilder.html" style="margin-left: 30px; padding-left: 0">QueryBuilder</a>
+            </div>
+            <div id="namespace-207182590" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Database-QueryBuilder-AbstractQueryBuilder.html"><abbr title="\Omega\Database\QueryBuilder\AbstractQueryBuilder">AbstractQueryBuilder</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-QueryBuilder-MysqlQueryBuilder.html"><abbr title="\Omega\Database\QueryBuilder\MysqlQueryBuilder">MysqlQueryBuilder</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-QueryBuilder-SqliteQueryBuilder.html"><abbr title="\Omega\Database\QueryBuilder\SqliteQueryBuilder">SqliteQueryBuilder</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1772736008"></a>
+                                <a href="namespaces/omega-database-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-1772736008" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Database-ServiceProvider-DatabaseServiceProvider.html"><abbr title="\Omega\Database\ServiceProvider\DatabaseServiceProvider">DatabaseServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Database-DatabaseFactory.html"><abbr title="\Omega\Database\DatabaseFactory">DatabaseFactory</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-Relationship.html"><abbr title="\Omega\Database\Relationship">Relationship</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Database-TableName.html"><abbr title="\Omega\Database\TableName">TableName</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-29144998"></a>
+                                <a href="namespaces/omega-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-29144998" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Exceptions-ExceptionHandler.html"><abbr title="\Omega\Exceptions\ExceptionHandler">ExceptionHandler</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1911097184"></a>
+                                <a href="namespaces/omega-filesystem.html" style="margin-left: 30px; padding-left: 0">Filesystem</a>
+            </div>
+            <div id="namespace-1911097184" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1531256152"></a>
+                                <a href="namespaces/omega-filesystem-adapter.html" style="margin-left: 30px; padding-left: 0">Adapter</a>
+            </div>
+            <div id="namespace-1531256152" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Filesystem-Adapter-FilesystemAdapterInterface.html"><abbr title="\Omega\Filesystem\Adapter\FilesystemAdapterInterface">FilesystemAdapterInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Filesystem-Adapter-AbstractFilesystemAdapter.html"><abbr title="\Omega\Filesystem\Adapter\AbstractFilesystemAdapter">AbstractFilesystemAdapter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Filesystem-Adapter-LocalAdapter.html"><abbr title="\Omega\Filesystem\Adapter\LocalAdapter">LocalAdapter</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1903476000"></a>
+                                <a href="namespaces/omega-filesystem-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-1903476000" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Filesystem-Exceptions-UnsupportedFilesystemException.html"><abbr title="\Omega\Filesystem\Exceptions\UnsupportedFilesystemException">UnsupportedFilesystemException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1629423374"></a>
+                                <a href="namespaces/omega-filesystem-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-1629423374" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Filesystem-ServiceProvider-FilesystemServiceProvider.html"><abbr title="\Omega\Filesystem\ServiceProvider\FilesystemServiceProvider">FilesystemServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Filesystem-FilesystemFactory.html"><abbr title="\Omega\Filesystem\FilesystemFactory">FilesystemFactory</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-561652452"></a>
+                                <a href="namespaces/omega-helpers.html" style="margin-left: 30px; padding-left: 0">Helpers</a>
+            </div>
+            <div id="namespace-561652452" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Helpers-Alias.html"><abbr title="\Omega\Helpers\Alias">Alias</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Helpers-App.html"><abbr title="\Omega\Helpers\App">App</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Helpers-Security.html"><abbr title="\Omega\Helpers\Security">Security</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Helpers-System.html"><abbr title="\Omega\Helpers\System">System</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1153507962"></a>
+                                <a href="namespaces/omega-http.html" style="margin-left: 30px; padding-left: 0">Http</a>
+            </div>
+            <div id="namespace-1153507962" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-420732367"></a>
+                                <a href="namespaces/omega-http-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-420732367" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Http-ServiceProvider-ResponseServiceProvider.html"><abbr title="\Omega\Http\ServiceProvider\ResponseServiceProvider">ResponseServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Http-Response.html"><abbr title="\Omega\Http\Response">Response</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-47188878"></a>
+                                <a href="namespaces/omega-logging.html" style="margin-left: 30px; padding-left: 0">Logging</a>
+            </div>
+            <div id="namespace-47188878" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1446431513"></a>
+                                <a href="namespaces/omega-logging-adapter.html" style="margin-left: 30px; padding-left: 0">Adapter</a>
+            </div>
+            <div id="namespace-1446431513" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Logging-Adapter-LoggingAdapterInterface.html"><abbr title="\Omega\Logging\Adapter\LoggingAdapterInterface">LoggingAdapterInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Logging-Adapter-AbstractLoggingAdapter.html"><abbr title="\Omega\Logging\Adapter\AbstractLoggingAdapter">AbstractLoggingAdapter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Logging-Adapter-StreamAdapter.html"><abbr title="\Omega\Logging\Adapter\StreamAdapter">StreamAdapter</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-162609923"></a>
+                                <a href="namespaces/omega-logging-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-162609923" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Logging-Exceptions-LoggingException.html"><abbr title="\Omega\Logging\Exceptions\LoggingException">LoggingException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-8564105"></a>
+                                <a href="namespaces/omega-logging-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-8564105" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Logging-ServiceProvider-LoggingServiceProvider.html"><abbr title="\Omega\Logging\ServiceProvider\LoggingServiceProvider">LoggingServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Logging-LoggingFactory.html"><abbr title="\Omega\Logging\LoggingFactory">LoggingFactory</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1296740065"></a>
+                                <a href="namespaces/omega-queue.html" style="margin-left: 30px; padding-left: 0">Queue</a>
+            </div>
+            <div id="namespace-1296740065" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1380578896"></a>
+                                <a href="namespaces/omega-queue-adapter.html" style="margin-left: 30px; padding-left: 0">Adapter</a>
+            </div>
+            <div id="namespace-1380578896" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Queue-Adapter-QueueAdapterInterface.html"><abbr title="\Omega\Queue\Adapter\QueueAdapterInterface">QueueAdapterInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Queue-Adapter-AbstractQueueAdapter.html"><abbr title="\Omega\Queue\Adapter\AbstractQueueAdapter">AbstractQueueAdapter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Queue-Adapter-DatabaseAdapter.html"><abbr title="\Omega\Queue\Adapter\DatabaseAdapter">DatabaseAdapter</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-800929139"></a>
+                                <a href="namespaces/omega-queue-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-800929139" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Queue-Exceptions-DriverException.html"><abbr title="\Omega\Queue\Exceptions\DriverException">DriverException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2008781777"></a>
+                                <a href="namespaces/omega-queue-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-2008781777" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Queue-ServiceProvider-QueueServiceProvider.html"><abbr title="\Omega\Queue\ServiceProvider\QueueServiceProvider">QueueServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Queue-Job.html"><abbr title="\Omega\Queue\Job">Job</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Queue-QueueFactory.html"><abbr title="\Omega\Queue\QueueFactory">QueueFactory</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1405312841"></a>
+                                <a href="namespaces/omega-renderer.html" style="margin-left: 30px; padding-left: 0">Renderer</a>
+            </div>
+            <div id="namespace-1405312841" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Renderer-RendererInterface.html"><abbr title="\Omega\Renderer\RendererInterface">RendererInterface</abbr></a></li>
+                                                                            <li class="trait"><a href="classes/Omega-Renderer-HasManagerTrait.html"><abbr title="\Omega\Renderer\HasManagerTrait">HasManagerTrait</abbr></a></li>
+                                                                            <li class="class"><a href="classes/Omega-Renderer-AdvancedRenderer.html"><abbr title="\Omega\Renderer\AdvancedRenderer">AdvancedRenderer</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Renderer-LiteralRenderer.html"><abbr title="\Omega\Renderer\LiteralRenderer">LiteralRenderer</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-572381543"></a>
+                                <a href="namespaces/omega-routing.html" style="margin-left: 30px; padding-left: 0">Routing</a>
+            </div>
+            <div id="namespace-572381543" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Routing-RouterInterface.html"><abbr title="\Omega\Routing\RouterInterface">RouterInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Routing-AbstractRouter.html"><abbr title="\Omega\Routing\AbstractRouter">AbstractRouter</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Routing-Route.html"><abbr title="\Omega\Routing\Route">Route</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Routing-Router.html"><abbr title="\Omega\Routing\Router">Router</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1518021562"></a>
+                                <a href="namespaces/omega-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-1518021562" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-ServiceProvider-ServiceProviderInterface.html"><abbr title="\Omega\ServiceProvider\ServiceProviderInterface">ServiceProviderInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-ServiceProvider-AbstractServiceProvider.html"><abbr title="\Omega\ServiceProvider\AbstractServiceProvider">AbstractServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1086112958"></a>
+                                <a href="namespaces/omega-session.html" style="margin-left: 30px; padding-left: 0">Session</a>
+            </div>
+            <div id="namespace-1086112958" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1423258078"></a>
+                                <a href="namespaces/omega-session-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-1423258078" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Session-Exceptions-SessionException.html"><abbr title="\Omega\Session\Exceptions\SessionException">SessionException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-981586697"></a>
+                                <a href="namespaces/omega-session-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-981586697" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Session-ServiceProvider-SessionServiceProvider.html"><abbr title="\Omega\Session\ServiceProvider\SessionServiceProvider">SessionServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1186950495"></a>
+                                <a href="namespaces/omega-session-storage.html" style="margin-left: 30px; padding-left: 0">Storage</a>
+            </div>
+            <div id="namespace-1186950495" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Session-Storage-StorageInterface.html"><abbr title="\Omega\Session\Storage\StorageInterface">StorageInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Session-Storage-AbstractStorage.html"><abbr title="\Omega\Session\Storage\AbstractStorage">AbstractStorage</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Session-Storage-NativeStorage.html"><abbr title="\Omega\Session\Storage\NativeStorage">NativeStorage</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Session-SessionFactory.html"><abbr title="\Omega\Session\SessionFactory">SessionFactory</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-593879532"></a>
+                                <a href="namespaces/omega-testing.html" style="margin-left: 30px; padding-left: 0">Testing</a>
+            </div>
+            <div id="namespace-593879532" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Testing-ServerExtension.html"><abbr title="\Omega\Testing\ServerExtension">ServerExtension</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Testing-TestCase.html"><abbr title="\Omega\Testing\TestCase">TestCase</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Testing-TestResponse.html"><abbr title="\Omega\Testing\TestResponse">TestResponse</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-565474731"></a>
+                                <a href="namespaces/omega-validation.html" style="margin-left: 30px; padding-left: 0">Validation</a>
+            </div>
+            <div id="namespace-565474731" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1258523455"></a>
+                                <a href="namespaces/omega-validation-exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-1258523455" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Validation-Exceptions-ValidationException.html"><abbr title="\Omega\Validation\Exceptions\ValidationException">ValidationException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-375560780"></a>
+                                <a href="namespaces/omega-validation-rule.html" style="margin-left: 30px; padding-left: 0">Rule</a>
+            </div>
+            <div id="namespace-375560780" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Validation-Rule-RuleInterface.html"><abbr title="\Omega\Validation\Rule\RuleInterface">RuleInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Validation-Rule-AbstractRule.html"><abbr title="\Omega\Validation\Rule\AbstractRule">AbstractRule</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Validation-Rule-EmailRule.html"><abbr title="\Omega\Validation\Rule\EmailRule">EmailRule</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Validation-Rule-IntegerRule.html"><abbr title="\Omega\Validation\Rule\IntegerRule">IntegerRule</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Validation-Rule-MinRule.html"><abbr title="\Omega\Validation\Rule\MinRule">MinRule</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-Validation-Rule-RequiredRule.html"><abbr title="\Omega\Validation\Rule\RequiredRule">RequiredRule</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1088834330"></a>
+                                <a href="namespaces/omega-validation-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-1088834330" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-Validation-ServiceProvider-ValidationServiceProvider.html"><abbr title="\Omega\Validation\ServiceProvider\ValidationServiceProvider">ValidationServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/Omega-Validation-ValidationInterface.html"><abbr title="\Omega\Validation\ValidationInterface">ValidationInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/Omega-Validation-ValidationManager.html"><abbr title="\Omega\Validation\ValidationManager">ValidationManager</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1764816148"></a>
+                                <a href="namespaces/omega-view.html" style="margin-left: 30px; padding-left: 0">View</a>
+            </div>
+            <div id="namespace-1764816148" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1649789754"></a>
+                                <a href="namespaces/omega-view-serviceprovider.html" style="margin-left: 30px; padding-left: 0">ServiceProvider</a>
+            </div>
+            <div id="namespace-1649789754" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-View-ServiceProvider-ViewServiceProvider.html"><abbr title="\Omega\View\ServiceProvider\ViewServiceProvider">ViewServiceProvider</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/Omega-View-View.html"><abbr title="\Omega\View\View">View</abbr></a></li>
+                                                    <li class="class"><a href="classes/Omega-View-ViewManager.html"><abbr title="\Omega\View\ViewManager">ViewManager</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="namespaces/omega-database-exceptions.html"><abbr title="\Omega\Database\Exceptions">Exceptions</abbr></a> <i class="icon-level-up"></i>
+                                            </nav>
+                    
+                    <h1><small>\Omega\Database\Exceptions</small>ConnectionException</h1>
+                    <p><em>Connection exception class.</em></p>
+                    <p>The <code class="prettyprint">ConnectionException</code> thrown for improperly configured database connections.
+This exception is a subclass of InvalidArgumentException and is used to represent
+errors that occur when a database connection is not properly configured.</p>
+
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <em>No public methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="files/vendor-omegacms-database-src-exceptions-connectionexception.html"><div class="path-wrapper">vendor/omegacms/database/src/Exceptions/ConnectionException.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Database\Exceptions</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></div>
+                                                                                                    <div class="namespace-wrapper">\Omega\Database\Exceptions\ConnectionException</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                                            <dt>See also</dt>
+                                                                                        <dd><a href="https://omegacms.github.io"><span class="namespace-wrapper"></span></a></dd>
+                                                                                                                                        <dt>Uses</dt>
+                                                                                
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                                                        <p>Omega</p>
+
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                                                        <p>Adriano Giovannini <a href="mailto:omegacms@outlook.com">omegacms@outlook.com</a></p>
+
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                                                        <p>Copyright (c) 2022 Adriano Giovannini. (https://omegacms.github.io)</p>
+
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                                                        <p>https://www.gnu.org/licenses/gpl-3.0-standalone.html     GPL V3.0+</p>
+
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                version
+                            </th>
+                            <td>
+                                                                    1.0.0                                    
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">ConnectionException.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="files/vendor/omegacms/database/src/Exceptions/ConnectionException.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="namespaces/omega.html"><abbr title="\Omega">Omega</abbr></a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="reports/errors.html">Errors</a></li>
+                                    <li><a href="reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="https://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on December 23rd, 2023 at 17:47.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
